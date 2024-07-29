@@ -20,14 +20,14 @@ const query = gql`
 
 function App() {
   const { data, loading } = useQuery(query);
-  const [todos,setTodos] = useState([])
+  const [todos, setTodos] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     setTodos(data.getTodos)
     console.log(data.getTodos);
-  },[data])
+  }, [data])
 
-  if(loading){
+  if (loading) {
     return (
       <div>Loading...</div>
     )
@@ -37,8 +37,8 @@ function App() {
       <h1>The todos</h1>
       <ul>
         {
-          todos.length > 0 && todos.map(todo=>(
-            <li key={todo.id} ><span>{todo.title}</span>--   (<span>{todo.user.name}</span>) -- {todo.completed ? <span style={{color:'green'}} >Done</span> : <span style={{color:'red'}} >Pending</span>} </li>
+          todos.length > 0 && todos.map(todo => (
+            <li key={todo.id} ><span>{todo.title}</span>--   (<span>{todo.user.name}</span>) -- {todo.completed ? <span style={{ color: 'green' }} >Done</span> : <span style={{ color: 'red' }} >Pending</span>} </li>
           ))
         }
       </ul>
